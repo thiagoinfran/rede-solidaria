@@ -9,6 +9,7 @@ export function iniciarCadastro(app) {
 
   function limparMensagem() {
     mensagem.textContent = '';
+    mensagem.removeAttribute('role');
     mensagem.setAttribute('role', 'status');
     campos.forEach((campo) => campo.removeAttribute('aria-invalid'));
   }
@@ -17,10 +18,17 @@ export function iniciarCadastro(app) {
     nome.setCustomValidity(nome.value.trim().length >= 2 ? '' : 'Informe um nome com pelo menos 2 caracteres, sem contar espaços nas pontas.');
   }
 
+  function validarEmail() {
+    const valor = email.value.trim();
+    const dominioCompleto = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(valor);
+    email.setCustomValidity(!valor || (email.validity.typeMismatch || dominioCompleto) ? '' : 'Informe um e-mail com domínio completo, como nome@dominio.com.');
+  }
+
   form.addEventListener('submit', (evento) => {
     evento.preventDefault();
     limparMensagem();
     validarNome();
+    validarEmail();
     if (!['', 'educacao', 'comunidade'].includes(interesse.value)) {
       interesse.setCustomValidity('Selecione uma área de interesse válida.');
     } else {
@@ -39,11 +47,12 @@ export function iniciarCadastro(app) {
     mensagem.textContent = 'Dados conferidos. Nenhuma informação foi enviada ou salva.';
     form.reset();
     nome.setCustomValidity('');
+    email.setCustomValidity('');
     interesse.setCustomValidity('');
   }, { signal: controlador.signal });
 
   nome.addEventListener('input', () => { nome.setCustomValidity(''); limparMensagem(); }, { signal: controlador.signal });
-  email.addEventListener('input', limparMensagem, { signal: controlador.signal });
+  email.addEventListener('input', () => { email.setCustomValidity(''); limparMensagem(); }, { signal: controlador.signal });
   interesse.addEventListener('change', () => { interesse.setCustomValidity(''); limparMensagem(); }, { signal: controlador.signal });
   return () => controlador.abort();
 }
