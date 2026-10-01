@@ -16,8 +16,10 @@ export function inicio() {
   const figura = document.createElement('figure');
   figura.style.margin = '1.5rem 0 0';
   const imagem = document.createElement('img');
-  imagem.src = 'imagens/oficina-inclusao-digital.png';
+  imagem.src = 'imagens/oficina-inclusao-digital.webp';
   imagem.alt = 'Instrutora orienta participantes em uma oficina de inclusão digital com computadores.';
+  imagem.width = 1672;
+  imagem.height = 941;
   imagem.loading = 'lazy';
   imagem.decoding = 'async';
   imagem.style.cssText = 'display:block;max-width:100%;height:auto;border-radius:12px';
