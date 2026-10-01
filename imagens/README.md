@@ -1,1 +1,2 @@
-Coloque aqui a imagem gerada na conversa com o nome oficina-inclusao-digital.png. O arquivo binário não foi anexado a este repositório; por isso, a interface não o referencia até que esteja disponível.
+Arquivo fonte da imagem original (`oficina-inclusao-digital.png`).
+Para produção, a SPA usa a versão otimizada em `public/imagens/oficina-inclusao-digital.webp`.
