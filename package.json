@@ -1,0 +1,9 @@
+{
+  "name": "rede-solidaria",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.mjs",
+    "check": "node --check js/app.js && node --check js/router.js && node --check js/templates.js && node --check js/projetos.js && node --check js/cadastro.js && node --check js/storage.js && npm test"
+  }
+}
