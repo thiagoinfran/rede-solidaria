@@ -1,0 +1,18 @@
+name: Verificacoes
+on:
+  pull_request:
+  push:
+    branches: [main, feat/acessibilidade-documentacao]
+jobs:
+  javascript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxe JavaScript
+        run: |
+          for arquivo in js/*.js tests/*.mjs; do node --check "$arquivo"; done
+      - name: Testar preferencia de categoria
+        run: node --test tests/*.mjs

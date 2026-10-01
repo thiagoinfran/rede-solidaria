@@ -7,6 +7,7 @@ a { color: inherit; }
 nav { display: flex; flex-wrap: wrap; gap: 1rem; }
 nav a { text-decoration: none; }
 nav a:hover, nav a:focus-visible { text-decoration: underline; }
+:focus-visible { outline: 3px solid #da8622; outline-offset: 3px; }
 main { width: min(100% - 2rem, 1000px); margin: 2rem auto; flex: 1; }
 section { background: white; border-radius: 12px; padding: clamp(1rem, 3vw, 2rem); }
 h1 { margin-top: 0; }
@@ -15,6 +16,7 @@ h1 { margin-top: 0; }
 label { display: block; margin: 1rem 0 .35rem; font-weight: 600; }
 input, select, textarea, button { font: inherit; }
 input, select, textarea { display: block; width: 100%; max-width: 34rem; padding: .65rem; border: 1px solid #809b94; border-radius: 6px; }
+[aria-invalid="true"] { border-color: #a52828; border-width: 2px; }
 button { margin-top: 1rem; border: 0; border-radius: 6px; padding: .7rem 1rem; background: #07584b; color: white; cursor: pointer; }
 .mensagem { min-height: 1.5rem; }
 .mensagem[role="alert"] { color: #a52828; }

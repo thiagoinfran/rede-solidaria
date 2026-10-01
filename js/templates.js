@@ -13,7 +13,18 @@ export function inicio() {
   const link = document.createElement('a');
   link.href = '#/projetos';
   link.textContent = 'Conhecer projetos';
-  secao.append(titulo, texto, link);
+  const figura = document.createElement('figure');
+  figura.style.margin = '1.5rem 0 0';
+  const imagem = document.createElement('img');
+  imagem.src = 'imagens/oficina-inclusao-digital.png';
+  imagem.alt = 'Instrutora orienta participantes em uma oficina de inclusão digital com computadores.';
+  imagem.loading = 'lazy';
+  imagem.decoding = 'async';
+  imagem.style.cssText = 'display:block;max-width:100%;height:auto;border-radius:12px';
+  const legenda = document.createElement('figcaption');
+  legenda.textContent = 'Oficina de inclusão digital — imagem ilustrativa.';
+  figura.append(imagem, legenda);
+  secao.append(titulo, texto, link, figura);
   return secao;
 }
 
@@ -25,6 +36,6 @@ export function projetos() {
 
 export function cadastro() {
   const secao = document.createElement('section');
-  secao.innerHTML = '<h1>Cadastro de interesse</h1><p>Este formulário é uma demonstração: não envia nem armazena dados pessoais.</p><form id="form-cadastro"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" required minlength="2" maxlength="100"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required><label for="interesse">Área de interesse</label><select id="interesse" name="interesse" required><option value="">Selecione</option><option value="educacao">Educação</option><option value="comunidade">Comunidade</option></select><button type="submit">Verificar cadastro</button><p id="mensagem-cadastro" class="mensagem" aria-live="polite"></p></form>';
+  secao.innerHTML = '<h1>Cadastro de interesse</h1><p>Este formulário é uma demonstração: não envia nem armazena dados pessoais.</p><form id="form-cadastro" novalidate><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="mensagem-cadastro"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="mensagem-cadastro"><label for="interesse">Área de interesse</label><select id="interesse" name="interesse" required aria-describedby="mensagem-cadastro"><option value="">Selecione</option><option value="educacao">Educação</option><option value="comunidade">Comunidade</option></select><button type="submit">Verificar cadastro</button><p id="mensagem-cadastro" class="mensagem" role="status" aria-live="polite"></p></form>';
   return secao;
 }
